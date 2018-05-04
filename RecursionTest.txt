@@ -1,0 +1,131 @@
+import javax.swing.JOptionPane;
+
+public class RecursionTest 
+{
+
+	public static int foo1(String o, char c) //#24
+	//TAS: return how many times a letter is in the string
+	{
+		if (o.length() == 0) 
+			return 0;
+		else
+		{
+			if (o.charAt(0) != c)
+				return 0 + foo1(o.substring(1, o.length()), c);
+			else
+				return 1 + foo1(o.substring(1, o.length()), c);
+		}
+	}
+	
+	public static String foo2(String m) //#25 - return 
+	{
+		if(m.length() == 0)
+			return "even";
+		else if(m.length() == 1)
+			return "odd";
+		else
+			return m.substring(1, m.length()-1);
+	}
+	
+	public static int foo3(int n) //#26
+	{
+		int sum = 0;
+		if (n == 0) 
+			return 0;
+		else
+			return n + foo3(n - 1);
+	}
+	
+	public static boolean foo4(String q)//#27
+	{
+		if (q.length() == 0) 
+			return true;
+		else 
+			return foo4(q.substring(0, q.length()-1));
+	}
+	
+	public static int foo5(int u)//#28
+	{
+		if (u >= 1000)
+			return u;
+		else
+		{
+			u = u * u; 
+			return foo5(u);
+		}
+	}
+	
+	public static boolean pal(String p)
+	//TASK: Return true if p is a palindrome (reads the same forwards as backwards)
+	//HINT: You will need to use the substring method
+	{		
+		if (p.length() <= 1)
+			return true;
+		else if(p.charAt(0) != p.charAt(p.length()-1) )
+			return false;
+		else 
+			return pal(p.substring(1, p.length()-1));
+	}
+
+	public static boolean pal (String s, int x, int y)
+	//TASK: Return true if s is a palindrome (reads the same forwards as backwards)
+		{
+	//BASE CASE #1 x >= y indicates the entire word has been checked
+			if (x >= y)	
+				return true;
+
+			//BASE CASE #2 if the letters don’t match, then s is not a palindrome
+			else if (s.charAt(x) != s.charAt(y))
+				return false;
+
+			//SMALLER CALLER – Still a potential palindrome, so check next 2 letters
+			else
+				return pal(s, x+1, y-1);
+		}//pal
+
+	public static int Multiply(int x, int y)
+	{
+		if(y == 0)
+			return 0;
+		else 
+			return x + Multiply(x, y-1);
+	}
+	
+	public static int power(int x, int y)
+	// PRE: x > 0
+	// POS: none
+	// TAS: Recursively compute x to the y power and return the result.
+	{
+		if(y == 0)
+			return 1;
+		else 
+			return x * power(x, y-1);
+	} // method recursiveExp
+
+	public static void main(String[] args) 
+	{
+		// -----------------------------------------------------------------
+		// The following code tests method power. The code reads in values
+		// for x and y, and computes x to the power y.
+		// -----------------------------------------------------------------
+		int x;
+		int y;
+
+		// ////// READ IN VALUES FOR x AND y //////////
+		x = Integer
+				.parseInt(JOptionPane.showInputDialog("Enter a value for x"));
+		y = Integer
+				.parseInt(JOptionPane.showInputDialog("Enter a value for y"));
+		String p = JOptionPane.showInputDialog("Enter a string");
+		
+
+		// ////// CALL THE power METHOD WITH x AND y AND DISPLAY RESULT// //////////
+		JOptionPane.showMessageDialog(null, " " + power(x, y));
+		JOptionPane.showMessageDialog(null, " " + Multiply(x, y));
+		JOptionPane.showMessageDialog(null, " " + pal(p));
+		
+		
+	} // main method
+
+} // class RecursionTest
+

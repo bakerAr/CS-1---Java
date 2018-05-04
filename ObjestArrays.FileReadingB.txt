@@ -1,0 +1,75 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class LineScore  
+{
+	private int runs, hits, errors;
+	private String team;
+
+	public LineScore(String t, int r, int h, int e)
+	{
+		team = t;
+		runs = r;
+		hits = h;
+		errors = e;
+	}
+
+	public LineScore()
+	{
+		team = "Team";
+		runs = 0;
+		hits = 0;
+		errors = 0;
+	}
+	
+	public String getTeam()
+	{
+		return team;
+	}
+	
+	public int getRuns()
+	{
+		return runs;
+	}
+	
+	public int getHits()
+	{
+		return hits;
+	}
+	
+	public int getErrors()
+	{
+		return errors;
+	}
+	
+	public void setTeam(String t)
+	{
+		team = t;
+	}
+	
+	public void setRuns(int r)
+	{
+		runs = r;
+	}
+	
+	public void setHits(int h)
+	{
+		hits = h;
+		
+	}
+	
+	public void setErrors(int e)
+	{
+		errors = e;
+	}
+	
+	public String toString()
+	{
+		if (team.length() < 9)
+			return team + "\t\t " + runs +  "  " + hits +  "  " + errors;
+		else
+			return team + "\t " + runs +  "  " + hits +  "  " + errors;
+	}
+	
+
+}

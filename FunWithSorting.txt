@@ -1,0 +1,67 @@
+public class FunWithSorting 
+{
+
+	public static void print(int[] n)
+	// TASK: Displays an array
+	{
+		for (int i = 0; i < n.length; i++)
+			System.out.print(n[i] + " ");
+		System.out.println();
+	}// print
+
+	public static void insertionSort(int[] array)
+	{
+		int j, temp;
+		for(int i = 1; i < array.length; i++)
+		{
+			j = i;
+			temp= array[i];
+		}
+
+		while(j != 0 && array[j - 1] > temp)
+		{
+			array[j] = array[j - 1];
+			j--;	
+		}
+		array[j] = temp;
+	}
+
+	public static void selectionSort(int[] array)
+	{
+		int temp;
+		int max;
+		int count = 0;
+	
+		for(int i = 0; i < array.length - 1; i++)
+		{
+			max = indexOfLargestElement(array, array.length - i);
+			temp = array[max];
+			array[max] = array[array.length - i - 1];
+			array[array.length - i - 1]= temp;
+			count++;
+		}
+		System.out.print(count);
+	}//sort
+	
+	public static int indexOfLargestElement (int [] array, int size)
+	{
+		int index = 0;
+		for (int i = 1; i < size; i++)
+		{
+			if (array[i] > array[index])
+				index = i;
+		}
+		return index;
+	}//indexOfLargestElement
+	
+
+	public static void main(String[] args) 
+	{
+		int[] numArray = { 2, 0, 15, 3, 9, 11 };
+		print(numArray);
+		selectionSort(numArray, numArray.length);
+		print(numArray);
+
+	}// end main
+
+}// end FunWithSorting
